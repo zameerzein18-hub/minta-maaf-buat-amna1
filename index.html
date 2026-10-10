@@ -1,5 +1,80 @@
 <!DOCTYPE html>
 <html lang="id">
+  <style>
+  /* Layar Kunci Bertema Pink Warm */
+  #pw-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: #fff0f3; /* Pink pastel lembut sesuai background web */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .pw-card {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 30px 24px;
+    max-width: 360px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(229, 107, 140, 0.15);
+    border: 1px solid #ffe3e8;
+  }
+
+  .pw-card h3 {
+    color: #d64968;
+    margin: 10px 0 6px;
+    font-size: 1.3rem;
+  }
+
+  .pw-card p {
+    color: #885e68;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+
+  .pw-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #ffd0d8;
+    border-radius: 50px;
+    font-size: 1rem;
+    text-align: center;
+    outline: none;
+    box-sizing: border-box;
+    transition: all 0.3s;
+  }
+
+  .pw-input:focus {
+    border-color: #e55b7e;
+  }
+
+  .pw-btn {
+    width: 100%;
+    margin-top: 14px;
+    padding: 12px;
+    background-color: #e55b7e; /* Pink cerah serasi dengan tombol di web */
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(229, 91, 126, 0.3);
+  }
+
+  #pw-error {
+    color: #e53935;
+    font-size: 0.85rem;
+    margin-top: 10px;
+    display: none;
+  }
+  </style>
+  
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +88,36 @@
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
+      <!-- Tampilan Layar Password -->
+<div id="pw-overlay">
+  <div class="pw-card">
+    <div style="font-size: 2.2rem;">🔒</div>
+    <h3>Masukkan Kata Sandi</h3>
+    <p>Halaman ini dikunci khusus untuk Irhamna ♡</p>
+    
+    <input type="password" id="pwInput" class="pw-input" placeholder="Ketik kata sandi..." />
+    <button class="pw-btn" onclick="verifikasiPassword()">Buka Halaman ♡</button>
+    
+    <p id="pw-error">Kata sandi salah, coba ingat-ingat lagi ya!</p>
+  </div>
+</div>
+
+<script>
+  function verifikasiPassword() {
+    // Ganti '123456' dengan password pilihanmu (misal: tanggal jadian / nama panggilan)
+    const pwBenar = "123456"; 
+    const input = document.getElementById("pwInput").value;
+    const overlay = document.getElementById("pw-overlay");
+    const errorMsg = document.getElementById("pw-error");
+
+    if (input === pwBenar) {
+      overlay.style.display = "none"; // Buka kunci jika password benar
+    } else {
+      errorMsg.style.display = "block"; // Tampilkan pesan salah
+    }
+  }
+</script>
+    
       margin:0; min-height:100vh; overflow-x:hidden; color:var(--ink);
       font-family: ui-rounded, "Trebuchet MS", system-ui, -apple-system, sans-serif;
       background:
